@@ -1,134 +1,134 @@
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-      color: #f0f0f0;
-      overflow: hidden;
-    }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  color: #f0f0f0;
+  overflow: hidden;
+}
 
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      height: 100%;
-    }
-    .slide {
-      flex: 0 0 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 20px;
-      animation: fadeIn 0.6s ease-in-out;
-    }
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  animation: fadeIn 0.6s ease-in-out;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .nav-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-    .nav-buttons button {
-      pointer-events: all;
-      background: rgba(255,255,255,0.2);
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      padding: 6px 12px;
-      cursor: pointer;
-      border-radius: 10px;
-      transition: background 0.3s;
-    }
-    .nav-buttons button:hover {
-      background: rgba(255,255,255,0.4);
-    }
+.nav-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.nav-buttons button {
+  pointer-events: all;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+.nav-buttons button:hover {
+  background: rgba(255,255,255,0.4);
+}
 
-    #main-time { font-size: 5rem; font-weight: bold; margin-bottom: 0.5rem; }
-    #main-date { font-size: 1.5rem; margin-bottom: 1rem; }
-    #main-weather { font-size: 1.2rem; text-align: center; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
-    #main-weather img { width: 50px; height: 50px; }
+#main-time { font-size: 5rem; font-weight: bold; margin-bottom: 0.5rem; }
+#main-date { font-size: 1.5rem; margin-bottom: 1rem; }
+#main-weather { font-size: 1.2rem; text-align: center; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+#main-weather img { width: 50px; height: 50px; }
 
-    .weather-only { font-size: 2rem; text-align: center; }
-    .weather-only img { display: block; margin: 20px auto; width: 100px; }
+.weather-only { font-size: 2rem; text-align: center; }
+.weather-only img { display: block; margin: 20px auto; width: 100px; }
 
-    .calendar-container { width: 90%; max-width: 600px; text-align: center; animation: fadeIn 0.8s ease; }
-    .calendar-container h2 { margin-bottom: 1rem; font-size: 2rem; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
-    .cal-cell {
-      padding: 10px;
-      background: rgba(30,30,30,0.7);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .cal-cell:hover {
-      background: rgba(60,60,60,0.8);
-    }
-    .header { background: #444; font-weight: bold; }
-    .today { background: goldenrod; color: black; }
-    .selected { background: green; }
+.calendar-container { width: 90%; max-width: 600px; text-align: center; animation: fadeIn 0.8s ease; }
+.calendar-container h2 { margin-bottom: 1rem; font-size: 2rem; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.cal-cell {
+  padding: 10px;
+  background: rgba(30,30,30,0.7);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cal-cell:hover {
+  background: rgba(60,60,60,0.8);
+}
+.header { background: #444; font-weight: bold; }
+.today { background: goldenrod; color: black; }
+.selected { background: green; }
 
-    canvas { max-width: 100%; margin: 20px 0; }
-    .chart-container { width: 80%; max-width: 500px; text-align: center; }
+canvas { max-width: 100%; margin: 20px 0; }
+.chart-container { width: 80%; max-width: 500px; text-align: center; }
 
-    .settings { position: fixed; top: 10px; right: 10px; z-index: 99; }
-    .settings button {
-      background: #444;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
+.settings { position: fixed; top: 10px; right: 10px; z-index: 99; }
+.settings button {
+  background: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
-    .modal {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #222;
-      padding: 30px;
-      border-radius: 20px;
-      z-index: 100;
-      width: 300px;
-    }
-    .modal.active { display: block; }
-    .modal label { display: block; margin-top: 10px; }
-    .modal select {
-      width: 100%;
-      margin-top: 5px;
-      padding: 8px;
-      background: #111;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-    }
-    .modal button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px;
-      background: #4caf50;
-      border: none;
-      color: #fff;
-      border-radius: 10px;
-      font-weight: bold;
-    }
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #222;
+  padding: 30px;
+  border-radius: 20px;
+  z-index: 100;
+  width: 300px;
+}
+.modal.active { display: block; }
+.modal label { display: block; margin-top: 10px; }
+.modal select {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+.modal button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #4caf50;
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+}
 
-    .clock-style-1 { font-family: 'Courier New', monospace; }
-    .clock-style-2 { font-family: 'Georgia', serif; }
-    .clock-style-3 { font-family: 'Arial Black', sans-serif; }
+.clock-style-1 { font-family: 'Courier New', monospace; }
+.clock-style-2 { font-family: 'Georgia', serif; }
+.clock-style-3 { font-family: 'Arial Black', sans-serif; }
