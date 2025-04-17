@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raspberry Pi Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="settings">
+    <button onclick="openModal()">Customize Clock</button>
+  </div>
+  <div class="modal" id="settingsModal">
+    <label>Clock Font:</label>
+    <select id="clock-style">
+      <option value="clock-style-1">Monospace</option>
+      <option value="clock-style-2">Serif</option>
+      <option value="clock-style-3">Bold Sans</option>
+    </select>
+    <button onclick="applySettings()">Apply</button>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel" id="carousel">
+      <section class="slide" id="main">
+        <div id="main-time" class="clock-style-1">--:--:--</div>
+        <div id="main-date">-- -- ----</div>
+        <div id="main-weather">
+          <img id="main-icon" src="" alt="" />
+          <span id="weather-temp">Loading weather...</span>
+          <span id="weather-wind"></span>
+          <span id="weather-pressure"></span>
+        </div>
+      </section>
+
+      <section class="slide" id="calendar">
+        <div class="calendar-container">
+          <h2 id="cal-title"></h2>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+      </section>
+
+      <section class="slide" id="weather">
+        <div class="weather-only" id="weather-content">Loading weather...</div>
+      </section>
+    </div>
+    <div class="nav-buttons">
+      <button onclick="prevSlide()">◀</button>
+      <button onclick="nextSlide()">▶</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
