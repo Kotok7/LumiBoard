@@ -3,89 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raspberry Pi Dashboard</title>
+  <title>LumiBoard Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- SETTINGS BUTTONS -->
   <div class="settings">
-    <button onclick="openModal()">Customize Clock</button>
-  </div>
-  <div class="modal" id="settingsModal">
-    <label>Clock Font:</label>
-    <select id="clock-style">
-      <option value="clock-style-1">Monospace</option>
-      <option value="clock-style-2">Serif</option>
-      <option value="clock-style-3">Bold Sans</option>
-    </select>
-    <button onclick="applySettings()">Apply</button>
+    <button id="openGlobalBtn">Global Settings</button>
+    <button id="openSlideBtn">Slide Settings</button>
   </div>
 
+  <!-- SETTINGS MODAL -->
+  <div class="modal" id="settingsModal">
+    <h3 id="modalTitle"></h3>
+    <div id="modalContent"></div>
+    <div class="modal-actions">
+      <button id="applyBtn">Apply</button>
+      <button id="cancelBtn">Cancel</button>
+    </div>
+  </div>
+
+  <!-- CAROUSEL -->
   <div class="carousel-container">
     <div class="carousel" id="carousel">
+      <!-- MAIN SLIDE -->
       <section class="slide" id="main">
         <div id="main-time" class="clock-style-1">--:--:--</div>
         <div id="main-date">-- -- ----</div>
-        <div id="main-weather">
-          <img id="main-icon" src="" alt="" />
-          <span id="weather-temp">Loading weather...</span>
-          <span id="weather-wind"></span>
-          <span id="weather-pressure"></span>
-        </div>
+        <!-- tu dodałem główną pogodę -->
+        <div id="main-weather" class="weather-cards"></div>
       </section>
-
+      <!-- CALENDAR SLIDE -->
       <section class="slide" id="calendar">
         <div class="calendar-container">
           <h2 id="cal-title"></h2>
           <div class="cal-grid" id="cal-grid"></div>
         </div>
       </section>
-
+      <!-- WEATHER SLIDE -->
       <section class="slide" id="weather">
-        <div class="weather-only" id="weather-content">Loading weather...</div>
+        <div class="weather-header">
+          <h2>Current Conditions</h2>
+          <div id="weather-current" class="weather-cards"></div>
+        </div>
+        <div class="weather-forecast-header">
+          <h2>Forecast</h2>
+        </div>
+        <div id="weather-forecast" class="weather-forecast"></div>
       </section>
     </div>
     <div class="nav-buttons">
-      <button onclick="prevSlide()">◀</button>
-      <button onclick="nextSlide()">▶</button>
+      <button id="prevBtn">◀</button>
+      <button id="nextBtn">▶</button>
     </div>
   </div>
+
   <script src="script.js"></script>
-<script>
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body>
 </html>
