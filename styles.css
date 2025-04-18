@@ -8,7 +8,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
@@ -36,13 +37,19 @@ html, body {
   align-items: center;
   flex-direction: column;
   padding: 20px;
-  animation: fadeIn 0.6s ease-in-out;
   overflow-y: auto;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0);   }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav-buttons {
@@ -115,7 +122,8 @@ html, body {
 }
 
 .modal select,
-.modal input[type="color"] {
+.modal input[type="color"],
+.modal input[type="number"] {
   width: 100%;
   margin-top: 5px;
   padding: 8px;
@@ -163,20 +171,13 @@ html, body {
   margin-bottom: 1rem;
 }
 
-/* === WEATHER (main + weather slide) centered grid === */
-.weather-only,
-#main-weather,
-#weather-current {
+.weather-only {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 20px;
   width: 90%;
   max-width: 800px;
   margin: 0 auto 20px;
-}
-
-.weather-only,
-#weather-current {
   padding: 20px;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--accent);
@@ -184,7 +185,14 @@ html, body {
   border-radius: 12px;
 }
 
-.weather-card {
+.weather-header h2,
+.weather-forecast-header h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.weather-card,
+.forecast-card {
   background: rgba(255, 255, 255, 0.1);
   padding: 15px;
   border-radius: 8px;
@@ -192,24 +200,12 @@ html, body {
   backdrop-filter: blur(5px);
 }
 
-.weather-card h3 {
+.weather-card strong {
+  display: block;
   margin-bottom: 8px;
-  font-size: 1rem;
   text-transform: uppercase;
   color: var(--accent);
 }
-
-.weather-card p {
-  font-size: 1.4rem;
-  margin: 4px 0;
-}
-
-.weather-card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 8px;
-}
-/* === END WEATHER FIX === */
 
 .calendar-container {
   width: 90%;
@@ -251,25 +247,13 @@ html, body {
   color: black;
 }
 
-/* weekend highlight fix */
-.cal-cell.weekend {
+.weekend {
   background: rgba(255, 215, 0, 0.7);
   color: #000;
 }
 
 .selected {
   background: green;
-}
-
-canvas {
-  max-width: 100%;
-  margin: 20px 0;
-}
-
-.chart-container {
-  width: 80%;
-  max-width: 500px;
-  text-align: center;
 }
 
 .clock-style-1 {
