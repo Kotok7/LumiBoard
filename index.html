@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LumiBoard Dashboard</title>
+    <title>LumiBoard</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -12,7 +12,6 @@
       <button id="openGlobalBtn">Global Settings</button>
       <button id="openSlideBtn">Slide Settings</button>
     </div>
-
     <div class="modal" id="settingsModal">
       <h3 id="modalTitle"></h3>
       <div id="modalContent"></div>
@@ -21,41 +20,76 @@
         <button id="cancelBtn">Cancel</button>
       </div>
     </div>
-
     <div class="carousel-container">
       <div class="carousel" id="carousel">
         <section class="slide" id="main">
-          <div id="main-time" class="clock-style-1">--:--:--</div>
+          <div class="clock-container">
+            <div id="analog-clock" class="analog-clock">
+              <div class="clock-face">
+                <div class="hour-hand"></div>
+                <div class="minute-hand"></div>
+                <div class="second-hand"></div>
+                <div class="center-dot"></div>
+              </div>
+            </div>
+            <div id="main-time" class="clock-style-1">--:--:--</div>
+            <div id="day-night-indicator"></div>
+          </div>
           <div id="main-date">-- -- ----</div>
           <div id="main-weather" class="weather-only"></div>
+          <div id="quote-container">
+            <blockquote id="quote-text">Loading Quote of the Day...</blockquote>
+            <cite id="quote-author"></cite>
+          </div>
+          <div class="links-container">
+            <button id="chatgpt-main-btn" class="feature-button">
+              <span class="button-icon">🤖</span>
+              Open ChatGPT
+            </button>
+          </div>
         </section>
-
         <section class="slide" id="calendar">
           <div class="calendar-container">
             <h2 id="cal-title"></h2>
             <div id="cal-grid" class="cal-grid"></div>
           </div>
+          <div id="reminder-container">
+            <h3>Notes & Reminders</h3>
+            <div class="reminder-input">
+              <input type="text" id="reminder-text" placeholder="Add a new note/reminder">
+              <button id="add-reminder">Add</button>
+            </div>
+            <ul id="reminders-list"></ul>
+          </div>
         </section>
-
         <section class="slide" id="weather">
           <div class="weather-header">
-            <h2>Current Conditions</h2>
+            <h2>Current Conditions</h2><br>
             <div id="weather-current" class="weather-only"></div>
           </div>
           <div class="weather-forecast-header">
-            <h2>Forecast</h2>
+            <h2>Forecast</h2><br>
           </div>
           <div id="weather-forecast" class="weather-only"></div>
         </section>
+        <section class="slide" id="links">
+          <h2>Quick Links</h2>
+          <div class="quick-links-container" id="quick-links">
+          </div>
+          <div class="add-link-container">
+            <input type="text" id="link-name" placeholder="Link Name">
+            <input type="text" id="link-url" placeholder="URL (include https://)">
+            <button id="add-link-btn">Add Link</button>
+          </div>
+        </section>
       </div>
-
+      <div class="nav-dots" id="nav-dots"></div>
       <div class="nav-buttons">
         <button id="prevBtn">◀</button>
         <button id="nextBtn">▶</button>
       </div>
     </div>
-
-    <script src="script.js"></script>
-        <script>alert("This website only works on >10 inch screens. We're currently working on adapting this page for Raspberry Pi.");</script>
+    <script src="script.js" id="mainScript"></script>
+    <script>alert("This website only works on >10 inch screens. We're currently working on adapting this page for Raspberry Pi.");</script>
   </body>
 </html>
