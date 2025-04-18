@@ -1,64 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LumiBoard Dashboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- SETTINGS BUTTONS -->
-  <div class="settings">
-    <button id="openGlobalBtn">Global Settings</button>
-    <button id="openSlideBtn">Slide Settings</button>
-  </div>
-
-  <!-- SETTINGS MODAL -->
-  <div class="modal" id="settingsModal">
-    <h3 id="modalTitle"></h3>
-    <div id="modalContent"></div>
-    <div class="modal-actions">
-      <button id="applyBtn">Apply</button>
-      <button id="cancelBtn">Cancel</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LumiBoard Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="settings">
+      <button id="openGlobalBtn">Global Settings</button>
+      <button id="openSlideBtn">Slide Settings</button>
     </div>
-  </div>
 
-  <!-- CAROUSEL -->
-  <div class="carousel-container">
-    <div class="carousel" id="carousel">
-      <!-- MAIN SLIDE -->
-      <section class="slide" id="main">
-        <div id="main-time" class="clock-style-1">--:--:--</div>
-        <div id="main-date">-- -- ----</div>
-        <!-- tu dodałem główną pogodę -->
-        <div id="main-weather" class="weather-cards"></div>
-      </section>
-      <!-- CALENDAR SLIDE -->
-      <section class="slide" id="calendar">
-        <div class="calendar-container">
-          <h2 id="cal-title"></h2>
-          <div class="cal-grid" id="cal-grid"></div>
-        </div>
-      </section>
-      <!-- WEATHER SLIDE -->
-      <section class="slide" id="weather">
-        <div class="weather-header">
-          <h2>Current Conditions</h2>
-          <div id="weather-current" class="weather-cards"></div>
-        </div>
-        <div class="weather-forecast-header">
-          <h2>Forecast</h2>
-        </div>
-        <div id="weather-forecast" class="weather-forecast"></div>
-      </section>
+    <div class="modal" id="settingsModal">
+      <h3 id="modalTitle"></h3>
+      <div id="modalContent"></div>
+      <div class="modal-actions">
+        <button id="applyBtn">Apply</button>
+        <button id="cancelBtn">Cancel</button>
+      </div>
     </div>
-    <div class="nav-buttons">
-      <button id="prevBtn">◀</button>
-      <button id="nextBtn">▶</button>
-    </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <section class="slide" id="main">
+          <div id="main-time" class="clock-style-1">--:--:--</div>
+          <div id="main-date">-- -- ----</div>
+          <div id="main-weather" class="weather-only"></div>
+        </section>
+
+        <section class="slide" id="calendar">
+          <div class="calendar-container">
+            <h2 id="cal-title"></h2>
+            <div id="cal-grid" class="cal-grid"></div>
+          </div>
+        </section>
+
+        <section class="slide" id="weather">
+          <div class="weather-header">
+            <h2>Current Conditions</h2>
+            <div id="weather-current" class="weather-only"></div>
+          </div>
+          <div class="weather-forecast-header">
+            <h2>Forecast</h2>
+          </div>
+          <div id="weather-forecast" class="weather-only"></div>
+        </section>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="prevBtn">◀</button>
+        <button id="nextBtn">▶</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
