@@ -1,5 +1,9 @@
 :root {
   --accent: #4caf50;
+  --day-bg: linear-gradient(to bottom right, #87ceeb, #3498db, #2980b9);
+  --night-bg: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  --rainy-bg: linear-gradient(to bottom right, #616161, #9bc5c3);
+  --sunny-bg: linear-gradient(to bottom right, #ff7e5f, #feb47b);
 }
 
 * {
@@ -12,9 +16,15 @@ html,
 body {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  background: var(--night-bg);
   color: #f0f0f0;
   overflow: hidden;
+  transition: background 1s ease;
+}
+
+body.light {
+  background: #f5f5f5;
+  color: #333;
 }
 
 .carousel-container {
@@ -72,6 +82,7 @@ body {
   cursor: pointer;
   border-radius: 10px;
   transition: background 0.3s;
+  margin: 0 15px;
 }
 
 .nav-buttons button:hover {
@@ -83,6 +94,8 @@ body {
   top: 10px;
   right: 10px;
   z-index: 99;
+  display: flex;
+  gap: 10px;
 }
 
 .settings button {
@@ -106,6 +119,7 @@ body {
   z-index: 100;
   width: 300px;
   color: #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .modal.active {
@@ -123,7 +137,8 @@ body {
 
 .modal select,
 .modal input[type="color"],
-.modal input[type="number"] {
+.modal input[type="number"],
+.modal input[type="text"] {
   width: 100%;
   margin-top: 5px;
   padding: 8px;
@@ -160,6 +175,13 @@ body {
   color: #fff;
 }
 
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 #main-time {
   font-size: 5rem;
   font-weight: bold;
@@ -181,7 +203,7 @@ body {
   padding: 20px;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid var(--accent);
-  box-shadow: 0 0 20px var(--accent);
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
   border-radius: 12px;
 }
 
@@ -212,6 +234,7 @@ body {
   max-width: 600px;
   text-align: center;
   animation: fadeIn 0.8s ease;
+  margin-bottom: 20px;
 }
 
 .calendar-container h2 {
@@ -266,4 +289,288 @@ body {
 
 .clock-style-3 {
   font-family: 'Arial Black', sans-serif;
+}
+
+/* Analog clock styles */
+.analog-clock {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  border: 4px solid var(--accent);
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.clock-face {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.hour-hand, .minute-hand, .second-hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 4px;
+}
+
+.hour-hand {
+  width: 6px;
+  height: 40%;
+  background: #333;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.minute-hand {
+  width: 4px;
+  height: 55%;
+  background: #555;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.second-hand {
+  width: 2px;
+  height: 65%;
+  background: red;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.day-night-mode {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#day-night-indicator {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+#quote-container {
+  width: 90%;
+  max-width: 600px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+#quote-text {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+#quote-author {
+  font-weight: bold;
+  display: block;
+  text-align: right;
+}
+
+#reminder-container {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.reminder-input {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#reminder-text {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+#add-reminder {
+  padding: 10px 15px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+#reminders-list {
+  list-style-type: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#reminders-list li {
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.remove-reminder {
+  background: #ff5555;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.nav-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.nav-dot.active {
+  background: var(--accent);
+}
+
+.links-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.feature-button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 25px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.feature-button:hover {
+  transform: scale(1.05);
+}
+
+.button-icon {
+  font-size: 1.5rem;
+}
+
+/* Quick Links Page */
+.quick-links-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  width: 90%;
+  max-width: 800px;
+  margin: 20px 0;
+}
+
+.quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.2s, background 0.3s;
+  position: relative;
+}
+
+.quick-link:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.quick-link-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.quick-link-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.remove-link {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff5555;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-link-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  max-width: 800px;
+}
+
+.add-link-container input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+#add-link-btn {
+  padding: 10px 15px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
