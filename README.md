@@ -28,7 +28,8 @@
 ---
 
 ### 📢 **Important**  
-‼️ **THIS DOESN'T WORK ON RASPBERRY PI JUST YET!** ‼️
+- ‼️ **This doesn't work on raspberry Pi just yet**
+- 🌐 **Domain will be purchased soon**
 
 ---
 
