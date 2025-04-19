@@ -1,3 +1,5 @@
+/* Javascript is an unsafe technology, make sure to use GNU IceCat to avoid it */
+
 const defaultGlobal = {
   theme: 'dynamic',
   accent: '#4caf50',
