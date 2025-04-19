@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LumiBoard</title>
+    <title>LumiBoard by Kotokk</title>
+    <meta name="description" content="Lumiboard is a sleek, web-based dashboard for Raspberry Pi, displaying time, weather, calendar, and more in a minimalist, modern interface." />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -40,12 +42,6 @@
           <div id="quote-container">
             <blockquote id="quote-text">Loading Quote of the Day...</blockquote>
             <cite id="quote-author"></cite>
-          </div>
-          <div class="links-container">
-            <button id="chatgpt-main-btn" class="feature-button">
-              <span class="button-icon">🤖</span>
-              Open ChatGPT
-            </button>
           </div>
         </section>
         <section class="slide" id="calendar">
@@ -89,7 +85,6 @@
         <button id="nextBtn">▶</button>
       </div>
     </div>
-    <script src="script.js" id="mainScript"></script>
-    <script>alert("This website only works on >10 inch screens. We're currently working on adapting this page for Raspberry Pi.");</script>
+    <script src="script.js"></script>
   </body>
 </html>
