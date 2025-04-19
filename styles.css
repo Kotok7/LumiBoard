@@ -23,7 +23,7 @@ body {
 }
 
 body.light {
-  background: #f5f5f5;
+  background: #ffffffde;
   color: #333;
 }
 
@@ -146,10 +146,6 @@ body.light {
   color: #fff;
   border: none;
   border-radius: 5px;
-}
-
-.modal input[type="checkbox"] {
-  margin-right: 8px;
 }
 
 .modal-actions {
@@ -291,7 +287,14 @@ body.light {
   font-family: 'Arial Black', sans-serif;
 }
 
-/* Analog clock styles */
+.clock-style-4 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.clock-style-5 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 .analog-clock {
   width: 180px;
   height: 180px;
@@ -350,12 +353,6 @@ body.light {
   background: red;
   transform: translateX(-50%);
   z-index: 3;
-}
-
-.day-night-mode {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
 }
 
 #day-night-indicator {
@@ -493,7 +490,6 @@ body.light {
   font-size: 1.5rem;
 }
 
-/* Quick Links Page */
 .quick-links-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
